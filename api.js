@@ -2,7 +2,7 @@ require('dotenv').config()
 const crypto = require('crypto');
 const querystring = require('querystring');
 const fetch = require('node-fetch')
-const ROOT_URL = 'https://localbitcoins.com/api/'
+const ROOT_URL = 'https://localbitcoins.com'
 
 const KEY = process.env.APIAUTH_KEY
 const SECRET = process.env.APIAUTH_SECRET
@@ -14,7 +14,7 @@ const DEFAULT_HEADERS = {
 
 const getMessageSignature = (path, params, nonce) => {
   const postParameters = querystring.stringify(params)
-  const _path = '/api/' + path
+  const _path = path
   const message = nonce + KEY + _path + postParameters
 
   return crypto.createHmac("sha256", SECRET).update(message).digest('hex').toUpperCase()
