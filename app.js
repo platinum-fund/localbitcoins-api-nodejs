@@ -1,20 +1,17 @@
-require('dotenv').config()
-const fetch = require('node-fetch')
-const ROOT_URL = 'https://localbitcoins.com/api/'
+const API = require('./api')
 
-const KEY = process.env.APIAUTH-KEY
-const SIGNATURE = process.env.APIAUTH-SIGNATURE
-
-const getData = async path => {
-  const url = ROOT_URL + path
-  const res = await fetch(url)
-
-  return res.json()
-}
+const CURRENCIES_URL = 'currencies/'
+const ADS_LIST_URL = 'ads/'
 
 const getCurrencies = async () => {
-  const path = 'currencies/'
-  const response = await getData(path)
+  const response = await API.get(CURRENCIES_URL)
   console.log(response)
 }
-getCurrencies()
+
+const getAds = async () => {
+  const response = await API.get(ADS_LIST_URL)
+  console.log(response)
+}
+
+// getCurrencies()
+getAds()
