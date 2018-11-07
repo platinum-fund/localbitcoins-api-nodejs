@@ -5,15 +5,16 @@ const ROOT_URL = 'https://localbitcoins.com/api/'
 const KEY = process.env.APIAUTH-KEY
 const SIGNATURE = process.env.APIAUTH-SIGNATURE
 
-const getData = async () => {
-  const url = ROOT_URL + 'currencies/'
-
+const getData = async path => {
+  const url = ROOT_URL + path
   const res = await fetch(url)
+
   return res.json()
 }
 
-const start = async () => {
-  const response = await getData()
+const getCurrencies = async () => {
+  const path = 'currencies/'
+  const response = await getData(path)
   console.log(response)
 }
-start()
+getCurrencies()
