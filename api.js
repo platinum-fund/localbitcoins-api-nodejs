@@ -37,7 +37,7 @@ const api = {
 
   post: async (path, payload) => {
     const headers = getHeaders(path, payload)
-    const res = fetch(ROOT_URL + path, { method: 'POST', body: JSON.stringify(payload), headers })
+    const res = await fetch(ROOT_URL + path, { method: 'POST', body: JSON.stringify(payload), headers })
 
     return res.json()
   }
