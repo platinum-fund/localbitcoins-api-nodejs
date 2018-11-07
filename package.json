@@ -1,0 +1,25 @@
+{
+  "name": "localbitcoins-api-nodejs",
+  "version": "1.0.0",
+  "description": "library for LocalBitcoins API",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "node-fetch": "^2.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platinum-fund/localbitcoins-api-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/platinum-fund/localbitcoins-api-nodejs/issues"
+  },
+  "homepage": "https://github.com/platinum-fund/localbitcoins-api-nodejs#readme"
+}
