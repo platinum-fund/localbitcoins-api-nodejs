@@ -1,4 +1,5 @@
-const API = require('./api')
+const API = require('./lib/api')
+const rankAds = require('./lib/rank-ads')
 
 const pathList = {
   CURRENCIES_URL: '/api/currencies/',
@@ -20,8 +21,33 @@ const getMyAds = async () => {
 const getAds = async () => {
   const response = await API.get( pathList.sellBtcCurrency('RUB', 'national-bank-transfer') )
   // const response = await API.get( pathList.sellBtcCountry('RU', 'Russian_Federation', 'national-bank-transfer') )
-  console.log(response.data.ad_list[7])
+  // console.log(response.data.ad_list)
+
+  // todo: use lodash _get
+  return response ? response.data.ad_list : null
+}
+
+const getOptimalAd = async conditions => {
+  const list = await getAds()
+  let rankedList
+
+  if(list) {
+    console.log(`Count of Ads in list: ${list.length}`)
+
+    rankedList = rankAds(list, conditions)
+
+    if(!rankedList[0] || rankedList[0].rank === 0)
+      console.log('Nothing found by ranking criteria')
+    else console.log(rankedList[0])
+  }
 }
 
 // getCurrencies()
-getAds()
+// getAds()
+getOptimalAd({
+  amount: 2,
+  shouldEquals: {
+    trade_type: 'ONLINE_BUY',
+    city: ''
+  }
+}) // 2 BTC
