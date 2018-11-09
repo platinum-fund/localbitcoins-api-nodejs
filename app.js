@@ -113,7 +113,7 @@ const getChatMessages = async contact_id => {
 
 // 3) Send rub to qiwi trades wallet
 
-// 4) [NOT WORKING] Send your phone to trader in chat msg
+// 4) Send your phone to trader in chat msg
 const sendMsg = async (contact_id, msg) => {
   const response = await API.post(pathList.sendChatMessage(contact_id), {
     msg
