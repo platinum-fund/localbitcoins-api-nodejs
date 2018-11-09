@@ -82,7 +82,9 @@ const contactRelease = async contact_id => {
   console.log(response)
 }
 
+//
 // Sell bitcoins:
+//
 
 // 1) Start trade with RUB amount
 // const adId = 873397
@@ -95,18 +97,8 @@ const contactRelease = async contact_id => {
 // contactRelease(contractId)
 
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // Buy bitcoins
+//
 
 // 1) Start trade with RUB amount
 // check on the website https://localbitcoins.net/request/online_sell_buyer/31672864 - contact_id
@@ -122,9 +114,9 @@ const getChatMessages = async contact_id => {
 // 3) Send rub to qiwi trades wallet
 
 // 4) [NOT WORKING] Send your phone to trader in chat msg
-const sendMsg = async (contact_id, message) => {
+const sendMsg = async (contact_id, msg) => {
   const response = await API.post(pathList.sendChatMessage(contact_id), {
-    message
+    msg
   })
   console.log(response)
 }
